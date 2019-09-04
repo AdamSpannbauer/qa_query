@@ -1,0 +1,6 @@
+deeppavlov
+requests
+bs4
+pandas
+sklearn
+annoy
