@@ -3,6 +3,7 @@ import json
 import uuid
 import logging
 from datetime import datetime
+import dateutil.parser
 from bs4 import BeautifulSoup
 from scraper import Scraper
 
@@ -57,8 +58,8 @@ class NasdaqScraper(Scraper):
                 t.decompose()
 
             article_title = article_soup.select('title')[0].text
-            article_published_datetime = article_soup.select('span[itemprop="datePublished"]')[0].text
-            article_published_datetime = datetime.strptime(article_published_datetime, '%B %d, %Y, %I:%M:%S %p %Z')
+            article_published_datetime = article_soup.select('span[itemprop="datePublished"]')[0]['content']
+            article_published_datetime = dateutil.parser.parse(article_published_datetime)
 
             article_p_tags = article_soup.select(self.article_text_selector)
             article_text = [p_tag.text for p_tag in article_p_tags if p_tag.text.strip()]
@@ -100,7 +101,7 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument('-o', '--output', default='data/articles',
                     help='Path for scraped results to be written to as multiple JSON files.')
-    ap.add_argument('-n', '--n_pages', default=1, type=int,
+    ap.add_argument('-n', '--n_pages', default=50, type=int,
                     help='Number of pages of articles to scrape (~10 per page).')
     ap.add_argument('-p', '--page_offset', default=0, type=int,
                     help='Page number to start on.')
