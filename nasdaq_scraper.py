@@ -94,6 +94,13 @@ class NasdaqScraper(Scraper):
 
 
 if __name__ == '__main__':
+    # Process can/will lead to duplicated articles.. until moving to a db with key restraints..
+    # To remove duplicates:
+    #   * PowerShell
+    #        * From data/articles directory run:
+    #            ls *.* -recurse | get-filehash | group -property hash | where { $_.count -gt 1 } | % { $_.group | select -skip 1 } | del
+    #   * Bash
+    #        * Fill in when not on windows machine
     import argparse
 
     logging.basicConfig(level=logging.DEBUG)
