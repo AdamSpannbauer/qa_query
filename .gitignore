@@ -1,3 +1,8 @@
+# large files
+data/annoy_idx.ann
+data/articles.csv
+data/preprocessing_pipeline.pickle
+
 # pycharm
 .idea
 
