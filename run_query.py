@@ -3,11 +3,8 @@ import pandas as pd
 from annoy import AnnoyIndex
 from bert_squad import QABot
 from feature_pipeline import DenseTransformer  # Needs to be in memory to load pipeline
+from feature_pipeline import ARTICLE_DF_PATH, PREPROCESSING_PIPELINE_PATH, ANNOY_PATH, N_DIM
 
-ARTICLE_DF_PATH = 'data/articles.csv'
-PREPROCESSING_PIPELINE_PATH = 'data/preprocessing_pipeline.pickle'
-ANNOY_PATH = 'data/annoy_idx.ann'
-N_DIM = 100
 N_ANSWERS = 5
 
 article_df = pd.read_csv(ARTICLE_DF_PATH)
@@ -30,5 +27,5 @@ while True:
 
     for doc_idx in doc_idxs:
         row = article_df.iloc[doc_idx, :]
-        answer = qa_bot.ask_question(row["text"], question)
+        answer = qa_bot.ask_question(row["full_text"], question)
         print(f'\t* {answer} (Source: {row["url"]})')

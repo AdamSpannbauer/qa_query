@@ -6,8 +6,13 @@ from deeppavlov import build_model, configs
 
 
 class QABot:
-    def __init__(self):
-        self.model = build_model(configs.squad.squad, download=True)
+    def __init__(self, use_noans=False, download=True):
+        if use_noans:
+            config = configs.squad.multi_squad_noans
+        else:
+            config = configs.squad.squad
+
+        self.model = build_model(config, download=download)
 
     def ask_question(self, document, question):
         if not isinstance(document, list):
@@ -17,7 +22,7 @@ class QABot:
             question = [question]
 
         answer = self.model(document, question)
-        return answer[0][0]
+        return answer
 
     def qa_session(self, document):
         while True:
@@ -46,5 +51,5 @@ if __name__ == '__main__':
 
     input_document = '\n\n'.join(document_list)
 
-    bot = QABot()
+    bot = QABot(use_noans=False)
     bot.qa_session(input_document)
