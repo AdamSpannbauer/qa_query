@@ -10,8 +10,12 @@ from sklearn.base import TransformerMixin
 import nltk
 from annoy import AnnoyIndex
 
-ARTICLE_DF_PATH = 'data/articles.csv'
+ARTICLE_SECTION_DF_PATH = 'data/articles.csv'
+ARTICLE_FULL_DF_PATH = 'data/full_text_df.csv'
+ARTICLE_NE_DF_PATH = 'data/ne_df.csv'
+
 PREPROCESSING_PIPELINE_PATH = 'data/preprocessing_pipeline.pickle'
+
 ANNOY_PATH = 'data/annoy_idx.ann'
 
 # From Annoy docs:
@@ -21,7 +25,7 @@ N_DIM = 1000
 N_TREES = 50
 
 
-def nltk_ner_extract(text, keep_labels=None, join=True):
+def nltk_ner_extract(text, keep_labels=None, join=False):
     if keep_labels is None:
         keep_labels = ['ORGANIZATION', 'LOCATION', 'FACILITY', 'GPE']
 
@@ -68,14 +72,27 @@ class DenseTransformer(TransformerMixin):
 
 
 if __name__ == '__main__':
-    section_text_df, full_text_df = read_json_articles_to_df()
-    ne_text = []
-    for t in tqdm(full_text_df['text']):
-        ne_text.append(nltk_ner_extract(t))
-    full_text_df['ne_text'] = ne_text
+    REPROCESS_TEXT = True
 
-    section_text_df.to_csv(ARTICLE_DF_PATH, index=False)
-    full_text_df.to_csv('data/ne_full_text_df.csv', index=False)
+    if REPROCESS_TEXT:
+        section_text_df, full_text_df = read_json_articles_to_df()
+        ne_text = []
+        for t in tqdm(full_text_df['text']):
+            ne_text.append(nltk_ner_extract(t))
+
+        ne_df = full_text_df.drop('text', axis=1)
+        ne_df['ne_text'] = ne_text
+
+        ne_df = ne_df.explode('ne_text')\
+            .groupby(['url', 'title', 'published_datetime', 'ne_text'])\
+            .size()\
+            .reset_index(name='count')
+
+        section_text_df.to_csv(ARTICLE_SECTION_DF_PATH, index=False)
+        full_text_df.to_csv(ARTICLE_FULL_DF_PATH, index=False)
+        ne_df.to_csv(ARTICLE_NE_DF_PATH, index=False)
+    else:
+        section_text_df = pd.read_csv(ARTICLE_SECTION_DF_PATH)
 
     preprocessing_pipeline = Pipeline([
         ('tfidf', TfidfVectorizer(stop_words='english')),
@@ -84,13 +101,15 @@ if __name__ == '__main__':
     ], verbose=True)
 
     features = preprocessing_pipeline.fit_transform(section_text_df['text'])
-    annoy_idx = AnnoyIndex(N_DIM, 'euclidean')
 
+    with open(PREPROCESSING_PIPELINE_PATH, 'wb') as file:
+        pickle.dump(preprocessing_pipeline, file, protocol=pickle.HIGHEST_PROTOCOL)
+
+    annoy_idx = AnnoyIndex(N_DIM, 'euclidean')
     for i, record in enumerate(features):
         annoy_idx.add_item(i, record)
 
     annoy_idx.build(N_TREES)
-
     annoy_idx.save(ANNOY_PATH)
-    with open(PREPROCESSING_PIPELINE_PATH, 'wb') as file:
-        pickle.dump(preprocessing_pipeline, file, protocol=pickle.HIGHEST_PROTOCOL)
+
+
