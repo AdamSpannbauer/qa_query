@@ -3,11 +3,11 @@ import pandas as pd
 from annoy import AnnoyIndex
 from bert_squad import QABot
 from feature_pipeline import DenseTransformer  # Needs to be in memory to load pipeline
-from feature_pipeline import ARTICLE_DF_PATH, PREPROCESSING_PIPELINE_PATH, ANNOY_PATH, N_DIM
+from feature_pipeline import ARTICLE_FULL_DF_PATH, PREPROCESSING_PIPELINE_PATH, ANNOY_PATH, N_DIM
 
 N_ANSWERS = 5
 
-article_df = pd.read_csv(ARTICLE_DF_PATH)
+article_df = pd.read_csv(ARTICLE_FULL_DF_PATH)
 
 with open(PREPROCESSING_PIPELINE_PATH, 'rb') as f:
     preprocessing_pipeline = pickle.load(f)
