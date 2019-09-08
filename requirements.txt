@@ -7,3 +7,5 @@ annoy
 tqdm
 nltk
 numpy
+
+pymongo
