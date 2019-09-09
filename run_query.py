@@ -14,11 +14,11 @@ full_text_df = pd.read_csv(fp.ARTICLE_FULL_DF_PATH)
 ne_df = pd.read_csv(fp.ARTICLE_NE_DF_PATH)
 ne_df['ne_text'] = ne_df['ne_text'].str.lower()
 
-# with open(fp.PREPROCESSING_PIPELINE_PATH, 'rb') as f:
-#     preprocessing_pipeline = pickle.load(f)
-#
-# annoy_idx = AnnoyIndex(fp.N_DIM, 'euclidean')
-# annoy_idx.load(fp.ANNOY_PATH)
+with open(fp.PREPROCESSING_PIPELINE_PATH, 'rb') as f:
+    preprocessing_pipeline = pickle.load(f)
+
+annoy_idx = AnnoyIndex(fp.N_DIM, 'euclidean')
+annoy_idx.load(fp.ANNOY_PATH)
 
 qa_bot = QABot(download=False)
 
