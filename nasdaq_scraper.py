@@ -2,7 +2,6 @@ import os
 import json
 import uuid
 import logging
-from datetime import datetime
 import dateutil.parser
 from bs4 import BeautifulSoup
 from scraper import Scraper

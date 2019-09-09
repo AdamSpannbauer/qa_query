@@ -7,3 +7,4 @@ annoy
 tqdm
 nltk
 numpy
+python-dateutil
