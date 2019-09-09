@@ -1,3 +1,4 @@
+whoosh
 deeppavlov
 requests
 bs4
