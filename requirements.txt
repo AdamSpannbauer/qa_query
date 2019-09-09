@@ -8,3 +8,4 @@ tqdm
 nltk
 numpy
 python-dateutil
+pymongo
