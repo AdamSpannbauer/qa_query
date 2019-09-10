@@ -10,7 +10,9 @@ from tqdm import tqdm
 WHOOSH_DIR = 'whoosh_idx'
 INDEX_NAME = 'nasdaq'
 
-NER_STOPWORDS = {'ceo'} | whoosh.analysis.STOP_WORDS
+QUESTION_STOPWORDS = {'who', 'what', 'where', 'when', 'why', 'how'}
+QA_STOPWORDS = QUESTION_STOPWORDS | whoosh.analysis.STOP_WORDS
+NER_STOPWORDS = QA_STOPWORDS
 
 
 def read_json_articles_to_df(json_glob='data/articles/*.json'):
@@ -53,8 +55,8 @@ if __name__ == '__main__':
         schema = Schema(
             url=ID(stored=True),
             published_datetime=ID(stored=True),
-            title=TEXT(stored=True, analyzer=StandardAnalyzer()),
-            article=TEXT(stored=True, analyzer=StandardAnalyzer()),
+            title=TEXT(stored=True, analyzer=StandardAnalyzer(stoplist=QA_STOPWORDS)),
+            article=TEXT(stored=True, analyzer=StandardAnalyzer(stoplist=QA_STOPWORDS)),
             title_named_entities=TEXT(analyzer=StandardAnalyzer(stoplist=NER_STOPWORDS)),
             article_named_entities=TEXT(analyzer=StandardAnalyzer(stoplist=NER_STOPWORDS)),
         )
