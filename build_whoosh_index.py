@@ -7,6 +7,11 @@ from whoosh.fields import Schema, TEXT, ID
 from whoosh.analysis import StandardAnalyzer
 from tqdm import tqdm
 
+WHOOSH_DIR = 'whoosh_idx'
+INDEX_NAME = 'nasdaq'
+
+NER_STOPWORDS = {'ceo'} | whoosh.analysis.STOP_WORDS
+
 
 def read_json_articles_to_df(json_glob='data/articles/*.json'):
     article_list = []
@@ -42,18 +47,16 @@ def nltk_ner_extract(text, keep_labels=None, join=True):
 
 
 if __name__ == '__main__':
-    WHOOSH_DIR = 'whoosh_idx'
-    INDEX_NAME = 'nasdaq'
-
     text_df = read_json_articles_to_df()
 
     if not whoosh.index.exists_in(WHOOSH_DIR):
         schema = Schema(
             url=ID(stored=True),
             published_datetime=ID(stored=True),
-            title=TEXT(stored=True),
-            named_entities=TEXT(analyzer=StandardAnalyzer()),
-            article=TEXT(analyzer=StandardAnalyzer()),
+            title=TEXT(stored=True, analyzer=StandardAnalyzer()),
+            article=TEXT(stored=True, analyzer=StandardAnalyzer()),
+            title_named_entities=TEXT(analyzer=StandardAnalyzer(stoplist=NER_STOPWORDS)),
+            article_named_entities=TEXT(analyzer=StandardAnalyzer(stoplist=NER_STOPWORDS)),
         )
 
         idx = whoosh.index.create_in(WHOOSH_DIR, schema=schema, indexname=INDEX_NAME)
@@ -63,14 +66,16 @@ if __name__ == '__main__':
     writer = idx.writer()
 
     for i, row in tqdm(text_df.iterrows(), total=text_df.shape[0]):
-        ner_text = nltk_ner_extract(row['text'])
+        title_ner_text = nltk_ner_extract(row['title'])
+        article_ner_text = nltk_ner_extract(row['text'])
 
         writer.add_document(
             url=row['url'],
             published_datetime=row['published_datetime'],
             title=row['title'],
-            named_entities=ner_text,
-            article=row['text']
+            article=row['text'],
+            title_named_entities=title_ner_text,
+            article_named_entities=article_ner_text,
         )
 
     writer.commit()
