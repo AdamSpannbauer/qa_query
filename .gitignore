@@ -1,8 +1,5 @@
 # large files
 whoosh_idx
-data/annoy_idx.ann
-data/articles.csv
-data/preprocessing_pipeline.pickle
 
 # pycharm
 .idea
