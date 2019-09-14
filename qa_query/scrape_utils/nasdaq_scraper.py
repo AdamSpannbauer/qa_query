@@ -1,19 +1,37 @@
 import os
+import glob
 import json
 import uuid
 import logging
 import dateutil.parser
+import pandas as pd
 from bs4 import BeautifulSoup
-from scraper import Scraper
+from .scraper import Scraper
 
 logger = logging.getLogger(__name__)
 
 
+def read_json_articles_to_df(json_glob='data/articles/*.json'):
+    """Utility for reading json output of NasdaqScraper to pandas.DataFrame"""
+    article_list = []
+    for p in glob.glob(json_glob):
+        with open(p, 'r') as f:
+            article_list.append(json.load(f))
+
+    articles_df = pd.DataFrame(article_list)
+
+    full_df = articles_df.copy()
+    full_df['text'] = full_df['text'].apply(lambda x: '\n\n'.join(x))
+    full_df = full_df.drop_duplicates().dropna()
+
+    return full_df
+
+
 class NasdaqScraper(Scraper):
     robots_txt_url = 'https://www.nasdaq.com/robots.txt'
-    splash_page_n_url = 'https://www.nasdaq.com/news/market-headlines.aspx?page={n}'
-    article_div_selector = '#newsContent p'
-    article_text_selector = '#articlebody p'
+    splash_page_n_url = 'https://www.nasdaq.com/news-and-insights/topic/markets/page/{n}'
+    article_div_selector = '.content-feed__card'
+    article_text_selector = '.body__content p'
 
     def __init__(self, n_tries=3, html_parser="html.parser"):
         self.html_parser = html_parser
@@ -34,8 +52,8 @@ class NasdaqScraper(Scraper):
 
         urls = []
         for article_div in article_divs:
-            article_a_tag = article_div.select('span a')[0]
-            article_url = article_a_tag.get_attribute_list('href')[0].strip()
+            article_a_tag = article_div.select('.content-feed__card-title-link')[0]
+            article_url = 'https://www.nasdaq.com' + article_a_tag.get_attribute_list('href')[0].strip()
             self.article_urls.append(article_url)
 
         return urls
@@ -57,7 +75,7 @@ class NasdaqScraper(Scraper):
                 t.decompose()
 
             article_title = article_soup.select('title')[0].text
-            article_published_datetime = article_soup.select('span[itemprop="datePublished"]')[0]['content']
+            article_published_datetime = article_soup.select('.timestamp__date')[0]['datetime']
             article_published_datetime = dateutil.parser.parse(article_published_datetime)
 
             article_p_tags = article_soup.select(self.article_text_selector)
@@ -90,30 +108,3 @@ class NasdaqScraper(Scraper):
         articles_dict = {'articles': articles}
         with open(file_path, 'w') as f:
             f.write(json.dumps(articles_dict, indent=2))
-
-
-if __name__ == '__main__':
-    # Process can/will lead to duplicated articles.. until moving to a db with key restraints..
-    # To remove duplicates:
-    #   * PowerShell
-    #        * From data/articles directory run:
-    #            ls *.* -recurse | get-filehash | group -property hash | where { $_.count -gt 1 } | % { $_.group | select -skip 1 } | del
-    #   * Bash
-    #        * Fill in when not on windows machine
-    import argparse
-
-    logging.basicConfig(level=logging.DEBUG)
-
-    ap = argparse.ArgumentParser()
-    ap.add_argument('-o', '--output', default='data/articles',
-                    help='Path for scraped results to be written to as multiple JSON files.')
-    ap.add_argument('-n', '--n_pages', default=50, type=int,
-                    help='Number of pages of articles to scrape (~10 per page).')
-    ap.add_argument('-p', '--page_offset', default=0, type=int,
-                    help='Page number to start on.')
-    args = vars(ap.parse_args())
-
-    scraper = NasdaqScraper()
-    scraper.scrape_articles(output_dir=args['output'],
-                            n_pages=args['n_pages'],
-                            page_offset=args['page_offset'])
