@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 import whoosh.index
-from whoosh.qparser import MultifieldParser
+from whoosh.qparser import MultifieldParser, OrGroup
 from qa_query import QABot
 
 
@@ -106,7 +106,7 @@ if __name__ == '__main__':
     whoosh_idx = whoosh.index.open_dir(args['index'], indexname=args['index_name'])
     query_parser = MultifieldParser(search_fields,
                                     schema=whoosh_idx.schema,
-                                    group=whoosh.qparser.OrGroup)
+                                    group=OrGroup)
 
     with whoosh_idx.searcher() as searcher:
         while True:  # To infinity and beyond

@@ -7,3 +7,5 @@ tqdm
 nltk
 numpy
 python-dateutil
+dash
+dash_table
