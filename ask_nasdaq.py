@@ -4,10 +4,8 @@ import whoosh.index
 from whoosh.qparser import MultifieldParser
 from qa_query import QABot
 
-QA_BOT = QABot(download=False)
 
-
-def format_answer(question_text, answer_list, whoosh_search_result, context_pad_size=30):
+def format_answer(question_text, answer_list, search_result, context_pad_size=30):
     answer_start_idx = answer_list[1][0]
     context_start = max([0, answer_start_idx - context_pad_size])
     context_end = min([len(search_result['article']), answer_start_idx + context_pad_size])
@@ -20,34 +18,75 @@ def format_answer(question_text, answer_list, whoosh_search_result, context_pad_
         'answer_start_idx': answer_start_idx,
         'answer_context': formatted_context,
         'answer_confidence': answer_list[2][0],
-        'source_text': whoosh_search_result['article'],
-        'source_url': whoosh_search_result['url']
+        'source_text': search_result['article'],
+        'source_title': search_result['title'],
+        'source_url': search_result['url'],
     }
 
     return answer_dict
 
 
-def print_answers(answer_df, n_answers=3, rank_by='squad_rank', print_fields=None):
+def get_top_answers(answer_df, n_answers=3, rank_by='squad_rank', print_fields=None):
+    rank_dict = {
+        'squad': 'squad_rank',
+        'search': 'search_rank',
+        'combined': 'combined_rank'
+    }
+
+    if rank_by not in rank_dict.keys():
+        raise KeyError(f'Invalid "rank_by" value. Valid "rank_by" values are: {list(rank_dict.keys())}')
+
+    rank_by = rank_dict[rank_by]
+
     if print_fields is None:
         print_fields = ['question', 'answer_text', 'answer_context',
-                        'search_rank', 'squad_rank',
-                        'source_text', 'source_url']
+                        'search_rank', 'squad_rank', 'combined_rank',
+                        'source_text', 'source_title', 'source_url']
 
-    answer_df = answer_df[print_fields]
     answer_df = answer_df.sort_values(rank_by)
+    answer_df = answer_df[print_fields]
     answer_df = answer_df.iloc[:n_answers, :]
 
-    for _, row in answer_df.iterrows():
-        print(json.dumps(row.to_dict(), indent=2))
+    return answer_df.to_dict(orient='records')
+
+
+def qa_query_nasdaq(question_text, whoosh_query_parser, whoosh_searcher, qa_bot_inst, n_search_results=20):
+    parsed_query = whoosh_query_parser.parse(question_text)
+    search_results = whoosh_searcher.search(parsed_query, limit=n_search_results)
+
+    answers = []
+    for i, search_result in enumerate(search_results):
+        full_answer = qa_bot_inst.ask_question(search_result['article'], question_text)
+        answer = format_answer(question_text, full_answer, search_result)
+        answer['search_rank'] = i + 1.0
+        answers.append(answer)
+
+    answer_df = pd.DataFrame(answers)
+    answer_df['squad_rank'] = answer_df['answer_confidence'].rank(ascending=False)
+    answer_df['combined_rank'] = (answer_df['squad_rank'] +
+                                  answer_df['search_rank']).rank()
+
+    return answer_df
+
+
+def print_answers(answer_list, header=None):
+    if header is not None:
+        print(f'\n---- {header} ----')
+
+    for answer_dict in answer_list:
+        print(json.dumps(answer_dict, indent=2))
 
 
 if __name__ == '__main__':
     import argparse
 
     ap = argparse.ArgumentParser()
+    ap.add_argument('-r', '--rank_method', default="combined",
+                    help='How to sort answers to determine the best. '
+                         'Possible rank methods: ["squad", "search", "combined"]')
     ap.add_argument('-a', '--n_answers', default=3, type=int,
-                    help='Number of answers to print (per each of the 2 rank methods)')
-    ap.add_argument('-r', '--n_search_results', default=20, type=int,
+                    help='Number of answers to print')
+    ap.add_argument('-s', '--n_search_results', default=20, type=int,
                     help='Number of search results to ask question to')
     ap.add_argument('-t', '--search_title', default=1, type=int,
                     help='Should title be searched in addition to article body? (0 if no)')
@@ -63,32 +102,26 @@ if __name__ == '__main__':
         search_fields = ['article_named_entities', 'article',
                          'title_named_entities', 'title']
 
+    qa_bot = QABot(download=False)
     whoosh_idx = whoosh.index.open_dir(args['index'], indexname=args['index_name'])
     query_parser = MultifieldParser(search_fields,
                                     schema=whoosh_idx.schema,
                                     group=whoosh.qparser.OrGroup)
 
     with whoosh_idx.searcher() as searcher:
-        while True:
+        while True:  # To infinity and beyond
             question = input('("exit" to quit) Question: ')
             if question.lower() == 'exit':
                 break
 
-            query = query_parser.parse(question)
-            search_results = searcher.search(query, limit=args['n_search_results'])
+            # Search documents and predict answers from search results with SQuAD model
+            nasdaq_answer_df = qa_query_nasdaq(question, query_parser, searcher, qa_bot,
+                                               n_search_results=args['n_search_results'])
 
-            answers = []
-            for i, search_result in enumerate(search_results):
-                full_answer = QA_BOT.ask_question(search_result['article'], question)
-                answer = format_answer(question, full_answer, search_result)
-                answer['search_rank'] = i + 1.0
-                answers.append(answer)
+            # Rank and subset answers
+            top_answers = get_top_answers(nasdaq_answer_df,
+                                          n_answers=args['n_answers'],
+                                          rank_by=args['rank_method'])
 
-            nasdaq_answer_df = pd.DataFrame(answers)
-            nasdaq_answer_df['squad_rank'] = nasdaq_answer_df['answer_confidence'].rank(ascending=False)
-
-            print('\n---- TOP ANSWERS BY SEARCH RANK ----')
-            print_answers(nasdaq_answer_df, n_answers=args['n_answers'], rank_by='search_rank')
-
-            print('\n---- TOP ANSWERS BY SQUAD RANK ----')
-            print_answers(nasdaq_answer_df, n_answers=args['n_answers'], rank_by='squad_rank')
+            # Dump output to console
+            print_answers(top_answers, header=f'TOP ANSWERS BY {args["rank_method"].upper()} RANK')
