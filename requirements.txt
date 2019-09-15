@@ -3,10 +3,7 @@ deeppavlov
 requests
 bs4
 pandas
-sklearn
-annoy
 tqdm
 nltk
 numpy
 python-dateutil
-pymongo
