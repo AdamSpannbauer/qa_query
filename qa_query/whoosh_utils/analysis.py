@@ -1,6 +1,6 @@
 import nltk
 import nltk.corpus
-from whoosh.analysis import StandardAnalyzer, RegexTokenizer, LowercaseFilter, StopFilter
+from whoosh.analysis import StemmingAnalyzer, RegexTokenizer, LowercaseFilter, StopFilter, StemFilter
 from whoosh.analysis.tokenizers import default_pattern
 
 NLTK_STOPWORDS = set(nltk.corpus.stopwords.words('english'))
@@ -57,6 +57,7 @@ def NERAnalyzer(expression=default_pattern, stoplist=QA_STOPWORDS,
     chain = NERTokenizer(expression, gaps)
     chain |= LowercaseFilter()
     chain |= StopFilter(stoplist=stoplist, minsize=minsize, maxsize=maxsize)
+    chain |= StemFilter()
 
     return chain
 
@@ -78,6 +79,6 @@ def QAAnalyzer(ner_tokenize=False, expression=default_pattern,
     :return: analyzer to be used with a whoosh_utils index
     """
     if not ner_tokenize:
-        return StandardAnalyzer(expression, stoplist, minsize, maxsize, gaps)
+        return StemmingAnalyzer(expression, stoplist, minsize, maxsize, gaps)
     else:
         return NERAnalyzer(expression, stoplist, minsize, maxsize, gaps)
