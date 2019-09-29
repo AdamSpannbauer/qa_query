@@ -8,7 +8,7 @@ from qa_query.whoosh_utils import QAAnalyzer
 
 
 ap = argparse.ArgumentParser()
-ap.add_argument('-o', '--output', default='whoosh_idx',
+ap.add_argument('-o', '--output', default='whoosh_idx_ner',
                 help='Name of directory to build whoosh index in')
 ap.add_argument('-n', '--name', default='nasdaq',
                 help='Name to give whoosh index')
