@@ -1,1 +1,1 @@
-from .bert_squad import QABot
+from .bert_squad import BertSquad

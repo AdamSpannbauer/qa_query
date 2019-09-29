@@ -2,7 +2,7 @@ import json
 import pandas as pd
 import whoosh.index
 from whoosh.qparser import MultifieldParser, OrGroup
-from qa_query import QABot
+from qa_query import BertSquad
 
 
 def format_answer(question_text, answer_list, search_result, context_pad_size=30):
@@ -50,13 +50,13 @@ def get_top_answers(answer_df, n_answers=3, rank_by='squad_rank', print_fields=N
     return answer_df.to_dict(orient='records')
 
 
-def qa_query_nasdaq(question_text, whoosh_query_parser, whoosh_searcher, qa_bot_inst, n_search_results=20):
+def qa_query_nasdaq(question_text, whoosh_query_parser, whoosh_searcher, bert_squad_inst, n_search_results=20):
     parsed_query = whoosh_query_parser.parse(question_text)
     search_results = whoosh_searcher.search(parsed_query, limit=n_search_results)
 
     answers = []
     for i, search_result in enumerate(search_results):
-        full_answer = qa_bot_inst.ask_question(search_result['article'], question_text)
+        full_answer = bert_squad_inst.ask_question(search_result['article'], question_text)
         answer = format_answer(question_text, full_answer, search_result)
         answer['search_rank'] = i + 1.0
         answers.append(answer)
@@ -102,7 +102,7 @@ if __name__ == '__main__':
         search_fields = ['article_named_entities', 'article',
                          'title_named_entities', 'title']
 
-    qa_bot = QABot(download=False)
+    bert_squad = BertSquad(download=False)
     whoosh_idx = whoosh.index.open_dir(args['index'], indexname=args['index_name'])
     query_parser = MultifieldParser(search_fields,
                                     schema=whoosh_idx.schema,
@@ -115,7 +115,7 @@ if __name__ == '__main__':
                 break
 
             # Search documents and predict answers from search results with SQuAD model
-            nasdaq_answer_df = qa_query_nasdaq(question, query_parser, searcher, qa_bot,
+            nasdaq_answer_df = qa_query_nasdaq(question, query_parser, searcher, bert_squad,
                                                n_search_results=args['n_search_results'])
 
             # Rank and subset answers

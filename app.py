@@ -43,7 +43,7 @@ app.layout = html.Div([
 )
 def ask_nasdaq(click, question):
     if click > 0:
-        nasdaq_answer_df = ask.qa_query_nasdaq(question, QUERY_PARSER, SEARCHER, QA_BOT)
+        nasdaq_answer_df = ask.qa_query_nasdaq(question, QUERY_PARSER, SEARCHER, BERT_SQUAD)
         nasdaq_answer_df = nasdaq_answer_df.sort_values('combined_rank')
 
         display_columns = [
@@ -78,7 +78,7 @@ def ask_nasdaq(click, question):
 if __name__ == '__main__':
     search_fields = ['article_named_entities', 'article', 'title_named_entities', 'title']
 
-    QA_BOT = ask.QABot(download=False)
+    BERT_SQUAD = ask.BertSquad(download=False)
     WHOOSH_IDX = ask.whoosh.index.open_dir('whoosh_idx', indexname='nasdaq')
     QUERY_PARSER = ask.MultifieldParser(search_fields,
                                         schema=WHOOSH_IDX.schema,
