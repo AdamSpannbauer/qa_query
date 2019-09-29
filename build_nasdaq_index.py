@@ -2,9 +2,9 @@ import argparse
 import os
 import whoosh.index
 from whoosh.fields import Schema, TEXT, ID
+from whoosh.analysis import StemmingAnalyzer
 from tqdm import tqdm
 from qa_query.scrape_utils import read_json_articles_to_df
-from qa_query.whoosh_utils import QAAnalyzer
 
 
 ap = argparse.ArgumentParser()
@@ -28,10 +28,8 @@ if not whoosh.index.exists_in(args['output']):
     schema = Schema(
         url=ID(stored=True, unique=True),
         published_datetime=ID(stored=True),
-        title=TEXT(stored=True, analyzer=QAAnalyzer()),
-        article=TEXT(stored=True, analyzer=QAAnalyzer()),
-        title_named_entities=TEXT(analyzer=QAAnalyzer(ner_tokenize=True)),
-        article_named_entities=TEXT(analyzer=QAAnalyzer(ner_tokenize=True)),
+        title=TEXT(stored=True, analyzer=StemmingAnalyzer()),
+        article=TEXT(stored=True, analyzer=StemmingAnalyzer()),
     )
 
     idx = whoosh.index.create_in(args['output'], schema=schema, indexname=args['name'])
@@ -46,8 +44,6 @@ for i, row in tqdm(text_df.iterrows(), total=text_df.shape[0]):
         published_datetime=row['published_datetime'],
         title=row['title'],
         article=row['text'],
-        title_named_entities=row['title'],
-        article_named_entities=row['text'],
     )
 
 writer.commit()

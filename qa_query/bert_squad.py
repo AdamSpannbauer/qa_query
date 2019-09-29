@@ -5,8 +5,8 @@ Full DeepPavlov docs: http://docs.deeppavlov.ai/en/master/
 from deeppavlov import build_model, configs
 
 
-class QABot:
-    def __init__(self, use_noans=False, download=True):
+class BertSquad:
+    def __init__(self, use_noans=False, download=False):
         if use_noans:
             config = configs.squad.multi_squad_noans
         else:
@@ -51,5 +51,5 @@ if __name__ == '__main__':
 
     input_document = '\n\n'.join(document_list)
 
-    bot = QABot(use_noans=False)
-    bot.qa_session(input_document)
+    bert_squad = BertSquad(use_noans=False)
+    bert_squad.qa_session(input_document)
