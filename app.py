@@ -26,7 +26,7 @@ app.layout = html.Div([
         html.Hr(),
         html.Div([
             dcc.Input(id='question_input', value='Who is Tim Cook?', type='text',
-                      style={'width': '30%'}),
+                      style={'width': '30%', 'fontSize': 16}),
             html.Button('Ask', id='ask_button', type='submit',
                         style={'margin-left': '10px'}),
         ], id='input')
@@ -43,24 +43,22 @@ app.layout = html.Div([
 )
 def ask_nasdaq(click, question):
     if click > 0:
-        nasdaq_answer_df = ask.qa_query_nasdaq(question, QUERY_PARSER, SEARCHER, BERT_SQUAD)
-        nasdaq_answer_df = nasdaq_answer_df.sort_values('combined_rank')
-
-        display_columns = [
+        display_fields = [
             'answer_text',
-            'answer_context',
-            'source_title',
-            # 'source_url',
+            'search_rank',
+            'squad_rank',
+            'combined_rank',
         ]
         display_names = [
             'Answer',
-            'Context',
-            'Source Title',
-            # 'Source URL',
+            'Search Rank',
+            'Squad Rank',
+            'Combined Rank',
         ]
-        display_df = nasdaq_answer_df[display_columns]
-        display_df.columns = display_names
-        display_df = display_df.iloc[:4, :]
+        nasdaq_answer_df = ask.qa_query_nasdaq(question, QUERY_PARSER, SEARCHER, BERT_SQUAD)
+        nasdaq_answer_df = ask.answer_display_df(nasdaq_answer_df, n_answers=10,
+                                                 display_fields=display_fields,
+                                                 display_names=display_names)
 
         datatable = dash_table.DataTable(
             id='answer_datatable',
@@ -68,21 +66,33 @@ def ask_nasdaq(click, question):
                 'selector': '.dash-cell div.dash-cell-value',
                 'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
             }],
-            columns=[{'name': i, 'id': i} for i in display_df.columns],
-            data=display_df.to_dict('rows'),
+            columns=[{'name': i, 'id': i} for i in nasdaq_answer_df.columns],
+            data=nasdaq_answer_df.to_dict('rows'),
+            style_cell={'fontSize': 16},
         )
 
         return datatable
 
 
 if __name__ == '__main__':
-    search_fields = ['article_named_entities', 'article', 'title_named_entities', 'title']
+    SEARCH_TITLE = True
+    SEARCH_ENTITIES = True
+
+    if SEARCH_TITLE:
+        search_fields = ['article']
+    else:
+        search_fields = ['article', 'title']
+
+    if SEARCH_ENTITIES:
+        ent_search_fields = [f + '_named_entities' for f in search_fields]
+        search_fields += ent_search_fields
 
     BERT_SQUAD = ask.BertSquad(download=False)
-    WHOOSH_IDX = ask.whoosh.index.open_dir('whoosh_idx', indexname='nasdaq')
+    WHOOSH_IDX = ask.whoosh.index.open_dir('whoosh_idx_ner', indexname='nasdaq')
     QUERY_PARSER = ask.MultifieldParser(search_fields,
                                         schema=WHOOSH_IDX.schema,
                                         group=ask.OrGroup)
 
     with WHOOSH_IDX.searcher() as SEARCHER:
+        print('app will be running at http://localhost:8050/')
         app.run_server()
