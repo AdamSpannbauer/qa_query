@@ -1,3 +1,13 @@
+# Silence infinite debug/warnings coming from deeppavlov & tf
+# nltk uses plain old `print()` so can't silence...
+import os
+import logging
+import warnings
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+logging.disable(logging.CRITICAL)
+warnings.filterwarnings('ignore')
+
 import json
 import pandas as pd
 import whoosh.index
@@ -5,7 +15,13 @@ from whoosh.qparser import MultifieldParser, OrGroup
 from qa_query import BertSquad
 
 
-def format_answer(question_text, answer_list, search_result, context_pad_size=30):
+# Force printout of all df columns in console output
+pd.set_option('display.max_columns', None)
+pd.set_option('display.expand_frame_repr', False)
+pd.set_option('max_colwidth', -1)
+
+
+def format_answer(question_text, answer_list, search_result, context_pad_size=10):
     answer_start_idx = answer_list[1][0]
     context_start = max([0, answer_start_idx - context_pad_size])
     context_end = min([len(search_result['article']), answer_start_idx + context_pad_size])
@@ -26,28 +42,34 @@ def format_answer(question_text, answer_list, search_result, context_pad_size=30
     return answer_dict
 
 
-def get_top_answers(answer_df, n_answers=3, rank_by='squad_rank', print_fields=None):
-    rank_dict = {
-        'squad': 'squad_rank',
-        'search': 'search_rank',
-        'combined': 'combined_rank'
-    }
-
-    if rank_by not in rank_dict.keys():
-        raise KeyError(f'Invalid "rank_by" value. Valid "rank_by" values are: {list(rank_dict.keys())}')
-
-    rank_by = rank_dict[rank_by]
-
-    if print_fields is None:
-        print_fields = ['question', 'answer_text', 'answer_context',
-                        'search_rank', 'squad_rank', 'combined_rank',
-                        'source_text', 'source_title', 'source_url']
-
+def answer_display_df(answer_df, n_answers=3, rank_by='combined_rank', display_fields=None, display_names=None):
     answer_df = answer_df.sort_values(rank_by)
-    answer_df = answer_df[print_fields]
-    answer_df = answer_df.iloc[:n_answers, :]
 
-    return answer_df.to_dict(orient='records')
+    if display_fields is None:
+        display_fields = [
+            'answer_text',
+            'answer_context',
+            'source_title',
+            'search_rank',
+            'squad_rank',
+            'combined_rank',
+        ]
+
+    if display_names is None:
+        display_names = [
+            'Answer',
+            'Context',
+            'Source Title',
+            'Search Rank',
+            'Squad Rank',
+            'Combined Rank',
+        ]
+
+    display_df = answer_df[display_fields]
+    display_df.columns = display_names
+    display_df = display_df.iloc[:n_answers, :]
+
+    return display_df.reset_index(drop=True)
 
 
 def qa_query_nasdaq(question_text, whoosh_query_parser, whoosh_searcher, bert_squad_inst, n_search_results=20):
@@ -84,12 +106,14 @@ if __name__ == '__main__':
     ap.add_argument('-r', '--rank_method', default="combined",
                     help='How to sort answers to determine the best. '
                          'Possible rank methods: ["squad", "search", "combined"]')
-    ap.add_argument('-a', '--n_answers', default=3, type=int,
+    ap.add_argument('-a', '--n_answers', default=10, type=int,
                     help='Number of answers to print')
     ap.add_argument('-s', '--n_search_results', default=20, type=int,
                     help='Number of search results to ask question to')
     ap.add_argument('-t', '--search_title', default=1, type=int,
                     help='Should title be searched in addition to article body? (0 if no)')
+    ap.add_argument('-e', '--search_entities', default=0, type=int,
+                    help='Should named entity fields be searched? (0 if no)')
     ap.add_argument('-i', '--index', default='whoosh_idx',
                     help='Name of directory containing whoosh index')
     ap.add_argument('-n', '--index_name', default='nasdaq',
@@ -97,10 +121,13 @@ if __name__ == '__main__':
     args = vars(ap.parse_args())
 
     if args['search_title'] == 0:
-        search_fields = ['article_named_entities', 'article']
+        search_fields = ['article']
     else:
-        search_fields = ['article_named_entities', 'article',
-                         'title_named_entities', 'title']
+        search_fields = ['article', 'title']
+
+    if not args['search_entities'] == 0:
+        ent_search_fields = [f + '_named_entities' for f in search_fields]
+        search_fields += ent_search_fields
 
     bert_squad = BertSquad(download=False)
     whoosh_idx = whoosh.index.open_dir(args['index'], indexname=args['index_name'])
@@ -119,9 +146,8 @@ if __name__ == '__main__':
                                                n_search_results=args['n_search_results'])
 
             # Rank and subset answers
-            top_answers = get_top_answers(nasdaq_answer_df,
-                                          n_answers=args['n_answers'],
-                                          rank_by=args['rank_method'])
+            top_answers = answer_display_df(nasdaq_answer_df,
+                                            n_answers=args['n_answers'],
+                                            rank_by=args['rank_method'] + '_rank')
 
-            # Dump output to console
-            print_answers(top_answers, header=f'TOP ANSWERS BY {args["rank_method"].upper()} RANK')
+            print(top_answers)
