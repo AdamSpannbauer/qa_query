@@ -1,5 +1,6 @@
 # large files
 whoosh_idx
+slides.key
 
 # pycharm
 .idea
