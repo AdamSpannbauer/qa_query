@@ -1,7 +1,12 @@
 from deeppavlov import build_model, configs
+from blank import ____
 
-document = ['The rain in Spain falls mainly on the plain.']
-question = ['Where does the rain in Spain fall?']
+# Define document to ask and question to be asked
+document = ____
+question = ____
 
-model = build_model(configs.squad.squad, download=False)
-model(document, question)
+# Init model
+bert_squad_model = ____
+
+# Ask question and print result
+____
