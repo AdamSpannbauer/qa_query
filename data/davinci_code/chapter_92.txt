@@ -1,0 +1,219 @@
+King's College, established by King George IV in 1829, houses its Department of Theology and 
+Religious Studies adjacent to Parliament on property granted by the Crown. King's College 
+Religion Department boasts not only 150 years' experience in teaching and research, but the 1982 
+establishment of the Research Institute in Systematic Theology, which possesses one of the most 
+complete and electronically advanced religious research libraries in the world. 
+
+Langdon still felt shaky as he and Sophie came in from the rain and entered the library. The 
+primary research room was as Teabing had described it — a dramatic octagonal chamber dominated 
+by an enormous round table around which King Arthur and his knights might have been 
+comfortable were it not for the presence of twelve flat-screen computer workstations. On the far 
+side of the room, a reference librarian was just pouring a pot of tea and settling in for her day of 
+work. 
+
+"Lovely morning," she said in a cheerful British accent, leaving the tea and walking over. "May I 
+help you?" 
+
+"Thank you, yes," Langdon replied. "My name is — " 
+
+"Robert Langdon." She gave a pleasant smile. "I know who you are." 
+
+For an instant, he feared Fache had put him on English television as well, but the librarian's smile 
+suggested otherwise. Langdon still had not gotten used to these moments of unexpected celebrity. 
+Then again, if anyone on earth were going to recognize his face, it would be a librarian in a 
+Religious Studies reference facility. 
+
+"Pamela Gettum," the librarian said, offering her hand. She had a genial, erudite face and a 
+pleasingly fluid voice. The horn-rimmed glasses hanging around her neck were thick. 
+
+"A pleasure," Langdon said. "This is my friend Sophie Neveu." 
+
+The two women greeted one another, and Gettum turned immediately back to Langdon. "I didn't 
+know you were coming." 
+
+"Neither did we. If it's not too much trouble, we could really use your help finding some 
+information." 
+
+Gettum shifted, looking uncertain. "Normally our services are by petition and appointment only, 
+unless of course you're the guest of someone at the college?" 
+
+Langdon shook his head. "I'm afraid we've come unannounced. A friend of mine speaks very 
+highly of you. Sir Leigh Teabing?" Langdon felt a pang of gloom as he said the name. "The British 
+Royal Historian." 
+
+
+
+Gettum brightened now, laughing. "Heavens, yes. What a character. Fanatical! Every time he 
+comes in, it's always the same search strings. Grail. Grail. Grail. I swear that man will die before he 
+gives up on that quest." She winked. "Time and money afford one such lovely luxuries, wouldn't 
+you say? A regular Don Quixote, that one." 
+
+"Is there any chance you can help us?" Sophie asked. "It's quite important." 
+
+Gettum glanced around the deserted library and then winked at them both. "Well, I can't very well 
+claim I'm too busy, now can I? As long as you sign in, I can't imagine anyone being too upset. 
+What did you have in mind?" 
+
+"We're trying to find a tomb in London." 
+
+Gettum looked dubious. "We've got about twenty thousand of them. Can you be a little more 
+specific?" 
+
+"It's the tomb of a knight. We don't have a name." 
+
+"A knight. That tightens the net substantially. Much less common." 
+
+"We don't have much information about the knight we're looking for," Sophie said, "but this is 
+what we know." She produced a slip of paper on which she had written only the first two lines of 
+the poem. 
+
+Hesitant to show the entire poem to an outsider, Langdon and Sophie had decided to share just the 
+first two lines, those that identified the knight. Compartmentalized cryptography, Sophie had called 
+it. When an intelligence agency intercepted a code containing sensitive data, cryptographers each 
+worked on a discrete section of the code. This way, when they broke it, no single cryptographer 
+possessed the entire deciphered message. 
+
+In this case, the precaution was probably excessive; even if this librarian saw the entire poem, 
+identified the knight's tomb, and knew what orb was missing, the information was useless without 
+the cryptex. 
+
+
+
+Gettum sensed an urgency in the eyes of this famed American scholar, almost as if his finding this 
+tomb quickly were a matter of critical importance. The green-eyed woman accompanying him also 
+seemed anxious. 
+
+Puzzled, Gettum put on her glasses and examined the paper they had just handed her. 
+
+In London lies a knight a Pope interred. 
+
+
+
+His labor's fruit a Holy wrath incurred. 
+
+She glanced at her guests. "What is this? Some kind of Harvard scavenger hunt?" 
+
+Langdon's laugh sounded forced. "Yeah, something like that." 
+
+Gettum paused, feeling she was not getting the whole story. Nonetheless, she felt intrigued and 
+found herself pondering the verse carefully. "According to this rhyme, a knight did something that 
+incurred displeasure with God, and yet a Pope was kind enough to bury him in London." 
+
+Langdon nodded. "Does it ring any bells?" 
+
+Gettum moved toward one of the workstations. "Not offhand, but let's see what we can pull up in 
+the database." 
+
+Over the past two decades, King's College Research Institute in Systematic Theology had used 
+optical character recognition software in unison with linguistic translation devices to digitize and 
+catalog an enormous collection of texts — encyclopedias of religion, religious biographies, sacred 
+scriptures in dozens of languages, histories, Vatican letters, diaries of clerics, anything at all that 
+qualified as writings on human spirituality. Because the massive collection was now in the form of 
+bits and bytes rather than physical pages, the data was infinitely more accessible. 
+
+Settling into one of the workstations, Gettum eyed the slip of paper and began typing. "To begin, 
+we'll run a straight Boolean with a few obvious keywords and see what happens." 
+
+"Thank you." 
+
+Gettum typed in a few words: 
+
+LONDON, KNIGHT, POPE 
+
+As she clicked the SEARCH button, she could feel the hum of the massive mainframe downstairs 
+scanning data at a rate of 500 MB/sec. "I'm asking the system to show us any documents whose 
+complete text contains all three of these keywords. We'll get more hits than we want, but it's a good 
+place to start. " 
+
+The screen was already showing the first of the hits now. 
+
+Painting the Pope. The Collected Portraits of Sir Joshua Reynolds. London University Press. 
+
+
+
+Gettum shook her head. "Obviously not what you're looking for." She scrolled to the next hit. 
+The London Writings of Alexander Pope by G. Wilson Knight. 
+
+Again she shook her head. 
+
+As the system churned on, the hits came up more quickly than usual. Dozens of texts appeared, 
+many of them referencing the eighteenth-century British writer Alexander Pope, whose 
+counterreligious, mock-epic poetry apparently contained plenty of references to knights and 
+London. 
+
+Gettum shot a quick glance to the numeric field at the bottom of the screen. This computer, by 
+calculating the current number of hits and multiplying by the percentage of the database left to 
+search, provided a rough guess of how much information would be found. This particular search 
+looked like it was going to return an obscenely large amount of data. 
+
+Estimated number of total hits: 2,692 
+
+
+
+"We need to refine the parameters further," Gettum said, stopping the search. "Is this all the 
+information you have regarding the tomb? There's nothing else to go on?" 
+
+Langdon glanced at Sophie Neveu, looking uncertain. 
+
+This is no scavenger hunt, Gettum sensed. She had heard the whisperings of Robert Langdon's 
+experience in Rome last year. This American had been granted access to the most secure library on 
+earth — the Vatican Secret Archives. She wondered what kinds of secrets Langdon might have 
+learned inside and if his current desperate hunt for a mysterious London tomb might relate to 
+information he had gained within the Vatican. Gettum had been a librarian long enough to know 
+the most common reason people came to London to look for knights. The Grail. 
+
+Gettum smiled and adjusted her glasses. "You are friends with Leigh Teabing, you are in England, 
+and you are looking for a knight." She folded her hands. "I can only assume you are on a Grail 
+quest." 
+
+Langdon and Sophie exchanged startled looks. 
+
+Gettum laughed. "My friends, this library is a base camp for Grail seekers. Leigh Teabing among 
+them. I wish I had a shilling for every time I'd run searches for the Rose, Mary Magdalene, 
+Sangreal, Merovingian, Priory of Sion, et cetera, et cetera. Everyone loves a conspiracy." She took 
+off her glasses and eyed them. "I need more information." 
+
+
+
+In the silence, Gettum sensed her guests' desire for discretion was quickly being outweighed by 
+their eagerness for a fast result. 
+
+"Here," Sophie Neveu blurted. "This is everything we know." Borrowing a pen from Langdon, she 
+wrote two more lines on the slip of paper and handed it to Gettum. 
+
+You seek the orb that ought be on his tomb. 
+It speaks of Rosy flesh and seeded womb. 
+
+
+
+Gettum gave an inward smile. The Grail indeed, she thought, noting the references to the Rose and 
+her seeded womb. "I can help you," she said, looking up from the slip of paper. "Might I ask where 
+this verse came from? And why you are seeking an orb?" 
+
+"You might ask," Langdon said, with a friendly smile, "but it's a long story and we have very little 
+time." 
+
+"Sounds like a polite way of saying 'mind your own business.' " 
+
+"We would be forever in your debt, Pamela," Langdon said, "if you could find out who this knight 
+is and where he is buried." 
+
+"Very well," Gettum said, typing again. "I'll play along. If this is a Grail-related issue, we should 
+cross-reference against Grail keywords. I'll add a proximity parameter and remove the title 
+weighting. That will limit our hits only to those instances of textual keywords that occur near a 
+Grail-related word." 
+
+Search for: KNIGHT, LONDON, POPE, TOMB 
+Within 100 word proximity of: GRAIL, ROSE, SANGREAL, CHALICE 
+
+
+
+"How long will this take?" Sophie asked. 
+
+"A few hundred terabytes with multiple cross-referencing fields?" Gettum's eyes glimmered as she 
+clicked the SEARCH key. "A mere fifteen minutes." 
+
+Langdon and Sophie said nothing, but Gettum sensed this sounded like an eternity to them. 
+
+"Tea?" Gettum asked, standing and walking toward the pot she had made earlier. "Leigh always 
+loves my tea. "

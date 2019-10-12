@@ -1,0 +1,125 @@
+The fireplace in Chateau Villette's drawing room was cold, but Collet paced before it nonetheless 
+as he read the faxes from Interpol. 
+
+Not at all what he expected. 
+
+Andre Vernet, according to official records, was a model citizen. No police record — not even a 
+parking ticket. Educated at prep school and the Sorbonne, he had a cum laude degree in 
+international finance. Interpol said Vernet's name appeared in the newspapers from time to time, 
+but always in a positive light. Apparently the man had helped design the security parameters that 
+kept the Depository Bank of Zurich a leader in the ultramodern world of electronic security. 
+Vernet's credit card records showed a penchant for art books, expensive wine, and classical 
+CD's — mostly Brahms — which he apparently enjoyed on an exceptionally high-end stereo system 
+he had purchased several years ago. 
+
+Zero, Collet sighed. 
+
+
+
+The only red flag tonight from Interpol had been a set of fingerprints that apparently belonged to 
+Teabing's servant. The chief PTS examiner was reading the report in a comfortable chair across the 
+room. 
+
+Collet looked over. "Anything?" 
+
+The examiner shrugged. "Prints belong to Remy Legaludec. Wanted for petty crime. Nothing 
+serious. Looks like he got kicked out of university for rewiring phone jacks to get free service... 
+later did some petty theft. Breaking and entering. Skipped out on a hospital bill once for an 
+emergency tracheotomy." He glanced up, chuckling. "Peanut allergy." 
+
+Collet nodded, recalling a police investigation into a restaurant that had failed to notate on its menu 
+that the chili recipe contained peanut oil. An unsuspecting patron had died of anaphylactic shock at 
+the table after a single bite. 
+
+"Legaludec is probably a live-in here to avoid getting picked up." The examiner looked amused. 
+"His lucky night." 
+
+Collet sighed. "All right, you better forward this info to Captain Fache." 
+
+The examiner headed off just as another PTS agent burst into the living room. "Lieutenant! We 
+found something in the barn. " 
+
+From the anxious look on the agent's face, Collet could only guess. "A body." 
+
+"No, sir. Something more..." He hesitated. "Unexpected." 
+
+Rubbing his eyes, Collet followed the agent out to the barn. As they entered the musty, cavernous 
+space, the agent motioned toward the center of the room, where a wooden ladder now ascended 
+high into the rafters, propped against the ledge of a hayloft suspended high above them. 
+
+"That ladder wasn't there earlier," Collet said. 
+
+"No, sir. I set that up. We were dusting for prints near the Rolls when I saw the ladder lying on the 
+floor. I wouldn't have given it a second thought except the rungs were worn and muddy. This 
+ladder gets regular use. The height of the hayloft matched the ladder, so I raised it and climbed up 
+to have a look." 
+
+Collet's eyes climbed the ladder's steep incline to the soaring hayloft. Someone goes up there 
+regularly? From down here, the loft appeared to be a deserted platform, and yet admittedly most of 
+it was invisible from this line of sight. 
+
+A senior PTS agent appeared at the top of the ladder, looking down. "You'll definitely want to see 
+
+
+
+this, Lieutenant," he said, waving Collet up with a latex-gloved hand. 
+
+Nodding tiredly, Collet walked over to the base of the old ladder and grasped the bottom rungs. 
+The ladder was an antique tapered design and narrowed as Collet ascended. As he neared the top, 
+Collet almost lost his footing on a thin rung. The barn below him spun. Alert now, he moved on, 
+finally reaching the top. The agent above him reached out, offering his wrist. Collet grabbed it and 
+made the awkward transition onto the platform. 
+
+"It's over there," the PTS agent said, pointing deep into the immaculately clean loft. "Only one set 
+of prints up here. We'll have an ID shortly." 
+
+Collet squinted through the dim light toward the far wall. What the hell? Nestled against the far 
+wall sat an elaborate computer workstation — two tower CPUs, a flat-screen video monitor with 
+speakers, an array of hard drives, and a multichannel audio console that appeared to have its own 
+filtered power supply. 
+
+Why in the world would anyone work all the way up here? Collet moved toward the gear. "Have 
+you examined the system?" 
+
+"It's a listening post." 
+
+Collet spun. "Surveillance?" 
+
+The agent nodded. "Very advanced surveillance." He motioned to a long project table strewn with 
+electronic parts, manuals, tools, wires, soldering irons, and other electronic components. "Someone 
+clearly knows what he's doing. A lot of this gear is as sophisticated as our own equipment. 
+Miniature microphones, photoelectric recharging cells, high-capacity RAM chips. He's even got 
+some of those new nano drives." 
+
+Collet was impressed. 
+
+"Here's a complete system," the agent said, handing Collet an assembly not much larger than a 
+pocket calculator. Dangling off the contraption was a foot-long wire with a stamp-sized piece of 
+wafer-thin foil stuck on the end. "The base is a high-capacity hard disk audio recording system 
+with rechargeable battery. That strip of foil at the end of the wire is a combination microphone and 
+photoelectric recharging cell." 
+
+Collet knew them well. These foil-like, photocell microphones had been an enormous breakthrough 
+a few years back. Now, a hard disk recorder could be affixed behind a lamp, for example, with its 
+foil microphone molded into the contour of the base and dyed to match. As long as the microphone 
+was positioned such that it received a few hours of sunlight per day, the photo cells would keep 
+recharging the system. Bugs like this one could listen indefinitely. 
+
+
+
+"Reception method?" Collet asked. 
+
+The agent signaled to an insulated wire that ran out of the back of the computer, up the wall, 
+through a hole in the barn roof. "Simple radio wave. Small antenna on the roof." 
+
+Collet knew these recording systems were generally placed in offices, were voice-activated to save 
+hard disk space, and recorded snippets of conversation during the day, transmitting compressed 
+audio files at night to avoid detection. After transmitting, the hard drive erased itself and prepared 
+to do it all over again the next day. 
+
+Collet's gaze moved now to a shelf on which were stacked several hundred audio cassettes, all 
+labeled with dates and numbers. Someone has been very busy. He turned back to the agent. "Do 
+you have any idea what target is being bugged?" 
+
+"Well, Lieutenant," the agent said, walking to the computer and launching a piece of software. "It's 
+the strangest thing...."

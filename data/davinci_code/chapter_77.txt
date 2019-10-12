@@ -1,0 +1,201 @@
+Langdon was impressed. Teabing had just finished writing out the entire twenty-two-letter Hebrew 
+alphabet — alef-beit — from memory. Granted, he'd used Roman equivalents rather than Hebrew 
+characters, but even so, he was now reading through them with flawless pronunciation. 
+
+ABGDHVZChTYKLMNSOPTzQRShTh 
+
+"Alef, Beit, Gimel, Dalet, Hei, Vav, Zayin, Chet, Tet, Yud, Kaf, Lamed, Mem, Nun, Samech, Ayin, 
+Pei, Tzadik, Kuf, Reish, Shin, and Tav. " Teabing dramatically mopped his brow and plowed on. "In 
+formal Hebrew spelling, the vowel sounds are not written. Therefore, when we write the word 
+Baphomet using the Hebrew alphabet, it will lose its three vowels in translation, leaving us — " 
+
+"Five letters," Sophie blurted. 
+
+Teabing nodded and began writing again. "Okay, here is the proper spelling of Baphomet in 
+Hebrew letters. I'll sketch in the missing vowels for clarity's sake. 
+
+BaPVoMeTh 
+
+
+
+"Remember, of course," he added, "that Hebrew is normally written in the opposite direction, but 
+we can just as easily use Atbash this way. Next, all we have to do is create our substitution scheme 
+by rewriting the entire alphabet in reverse order opposite the original alphabet." 
+
+"There's an easier way," Sophie said, taking the pen from Teabing. "It works for all reflectional 
+
+
+
+substitution ciphers, including the Atbash. A little trick I learned at the Royal Holloway." Sophie 
+wrote the first half of the alphabet from left to right, and then, beneath it, wrote the second half, 
+right to left. "Cryptanalysts call it the fold-over. Half as complicated. Twice as clean." 
+
+
+
+A 
+
+
+B 
+
+
+G 
+
+
+D 
+
+
+H 
+
+
+V 
+
+
+Z 
+
+
+Ch 
+
+
+T 
+
+
+Y 
+
+
+K 
+
+
+Th 
+
+
+Sh 
+
+
+R 
+
+
+Q 
+
+
+Tz 
+
+
+P 
+
+
+
+
+
+S 
+
+
+N 
+
+
+M 
+
+
+L 
+
+
+
+Teabing eyed her handiwork and chuckled. "Right you are. Glad to see those boys at the Holloway 
+are doing their job." 
+
+Looking at Sophie's substitution matrix, Langdon felt a rising thrill that he imagined must have 
+rivaled the thrill felt by early scholars when they first used the Atbash Cipher to decrypt the now 
+famous Mystery of Sheshach. For years, religious scholars had been baffled by biblical references 
+to a city called Sheshach. The city did not appear on any map nor in any other documents, and yet 
+it was mentioned repeatedly in the Book of Jeremiah — the king of Sheshach, the city of Sheshach, 
+the people of Sheshach. Finally, a scholar applied the Atbash Cipher to the word, and his results 
+were mind-numbing. The cipher revealed that Sheshach was in fact a code word for another very 
+well-known city. The decryption process was simple. 
+
+Sheshach, in Hebrew, was spelled: Sh-Sh-K. 
+
+Sh-Sh-K, when placed in the substitution matrix, became B-B-L. 
+
+B-B-L, in Hebrew, spelled Babel. 
+
+The mysterious city of Sheshach was revealed as the city of Babel, and a frenzy of biblical 
+examination ensued. Within weeks, several more Atbash code words were uncovered in the Old 
+Testament, unveiling myriad hidden meanings that scholars had no idea were there. 
+
+"We're getting close," Langdon whispered, unable to control his excitement. 
+
+"Inches, Robert," Teabing said. He glanced over at Sophie and smiled. "You ready?" 
+
+She nodded. 
+
+"Okay, Baphomet in Hebrew without the vowels reads: B-P-V-M-Th. Now we simply apply your 
+Atbash substitution matrix to translate the letters into our five-letter password." 
+
+
+
+Langdon's heart pounded. B-P-V-M-Th. The sun was pouring through the windows now. He looked 
+at Sophie's substitution matrix and slowly began to make the conversion. B is Sh... P is V... 
+
+
+
+Teabing was grinning like a schoolboy at Christmas. "And the Atbash Cipher reveals..." He 
+stopped short. "Good God!" His face went white. 
+
+Langdon's head snapped up. 
+
+"What's wrong?" Sophie demanded. 
+
+"You won't believe this." Teabing glanced at Sophie. "Especially you." 
+
+"What do you mean?" she said. 
+
+"This is... ingenious," he whispered. "Utterly ingenious!" Teabing wrote again on the paper. 
+"Drumroll, please. Here is your password." He showed them what he had written. 
+
+Sh-V-P-Y-A 
+
+Sophie scowled. "What is it?" 
+
+Langdon didn't recognize it either. 
+
+Teabing's voice seemed to tremble with awe. "This, my friend, is actually an ancient word of 
+wisdom." 
+
+Langdon read the letters again. An ancient word of wisdom frees this scroll. An instant later he got 
+it. He had newer seen this coming. "An ancient word of wisdom!" 
+
+Teabing was laughing. "Quite literally!" 
+
+Sophie looked at the word and then at the dial. Immediately she realized Langdon and Teabing had 
+failed to see a serious glitch. "Hold on! This can't be the password," she argued. "The cryptex 
+doesn't have an Sh on the dial. It uses a traditional Roman alphabet. " 
+
+"Read the word," Langdon urged. "Keep in mind two things. In Hebrew, the symbol for the sound 
+Sh can also be pronounced as S, depending on the accent. Just as the letter P can be pronounced F." 
+
+SVFYA? she thought, puzzled. 
+
+"Genius!" Teabing added. "The letter Vav is often a placeholder for the vowel sound O!" 
+
+Sophie again looked at the letters, attempting to sound them out. 
+
+"S...o...f...y...a." 
+
+
+
+She heard the sound of her voice, and could not believe what she had just said. "Sophia? This 
+spells Sophia?" 
+
+Langdon was nodding enthusiastically. "Yes! Sophia literally means wisdom in Greek. The root of 
+your name, Sophie, is literally a 'word of wisdom.' " 
+
+Sophie suddenly missed her grandfather immensely. He encrypted the Priory keystone with my 
+name. A knot caught in her throat. It all seemed so perfect. But as she turned her gaze to the five 
+lettered dials on the cryptex, she realized a problem still existed. "But wait... the word Sophia has 
+six letters." 
+
+Teabing's smile never faded. "Look at the poem again. Your grandfather wrote, 'An ancient word 
+of wisdom.' " 
+
+"Yes?" 
+
+Teabing winked. "In ancient Greek, wisdom is spelled S-O-F-I-A."

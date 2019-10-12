@@ -1,0 +1,190 @@
+"Ten digits," Sophie said, her cryptologic senses tingling as she studied the printout. 
+
+13-3-2-21-1-1-8-5 
+
+Grand-pere wrote his account number on the Louvre floor! 
+
+When Sophie had first seen the scrambled Fibonacci sequence on the parquet, she had assumed its 
+sole purpose was to encourage DCPJ to call in their cryptographers and get Sophie involved. Later, 
+she realized the numbers were also a clue as to how to decipher the other lines — a sequence out of 
+order... a numeric anagram. Now, utterly amazed, she saw the numbers had a more important 
+meaning still. They were almost certainly the final key to opening her grandfather's mysterious safe- 
+deposit box. 
+
+"He was the master of double-entendres," Sophie said, turning to Langdon. "He loved anything 
+with multiple layers of meaning. Codes within codes." 
+
+Langdon was already moving toward the electronic podium near the conveyor belt. Sophie grabbed 
+the computer printout and followed. 
+
+The podium had a keypad similar to that of a bank ATM terminal. The screen displayed the bank's 
+cruciform logo. Beside the keypad was a triangular hole. Sophie wasted no time inserting the shaft 
+of her key into the hole. 
+
+The screen refreshed instantly. 
+
+ACCOUNT NUMBER: 
+
+
+
+The cursor blinked. Waiting. 
+
+Ten digits. Sophie read the numbers off the printout, and Langdon typed them in. 
+
+ACCOUNT NUMBER: 1332211185 
+
+
+
+When he had typed the last digit, the screen refreshed again. A message in several languages 
+appeared. English was on top. 
+
+CAUTION: 
+
+Before you strike the enter key, please check the accuracy of your 
+
+account number. 
+
+For your own security, if the computer does not recognize your 
+account number, this system will automatically shut down. 
+
+
+
+"Fonction terminer, " Sophie said, frowning. "Looks like we only get one try." Standard ATM 
+machines allowed users three attempts to type a PIN before confiscating their bank card. This was 
+obviously no ordinary cash machine. 
+
+"The number looks right," Langdon confirmed, carefully checking what they had typed and 
+comparing it to the printout. He motioned to the ENTER key. "Fire away." 
+
+Sophie extended her index finger toward the keypad, but hesitated, an odd thought now hitting her. 
+
+"Go ahead," Langdon urged. "Vernet will be back soon." 
+
+"No." She pulled her hand away. "This isn't the right account number." 
+
+"Of course it is! Ten digits. What else would it be?" 
+
+"It's too random." 
+
+Too random? Langdon could not have disagreed more. Every bank advised its customers to choose 
+PINs at random so nobody could guess them. Certainly clients here would be advised to choose 
+their account numbers at random. 
+
+
+
+Sophie deleted everything she had just typed in and looked up at Langdon, her gaze self-assured. 
+"It's far too coincidental that this supposedly random account number could be rearranged to form 
+the Fibonacci sequence. " 
+
+Langdon realized she had a point. Earlier, Sophie had rearranged this account number into the 
+Fibonacci sequence. What were the odds of being able to do that? 
+
+Sophie was at the keypad again, entering a different number, as if from memory. "Moreover, with 
+my grandfather's love of symbolism and codes, it seems to follow that he would have chosen an 
+account number that had meaning to him, something he could easily remember." She finished 
+typing the entry and gave a sly smile. "Something that appeared random... but was not. " Langdon 
+looked at the screen. 
+
+ACCOUNT NUMBER: 1123581321 
+
+
+
+It took him an instant, but when Langdon spotted it, he knew she was right. 
+
+The Fibonacci sequence. 
+
+1-1-2-3-5-8-13-21 
+
+When the Fibonacci sequence was melded into a single ten-digit number, it became virtually 
+unrecognizable. Easy to remember, and yet seemingly random. A brilliant ten-digit code that 
+Sauniere would never forget. Furthermore, it perfectly explained why the scrambled numbers on 
+the Louvre floor could be rearranged to form the famous progression. 
+
+Sophie reached down and pressed the ENTER key. 
+
+Nothing happened. 
+
+At least nothing they could detect. 
+
+
+
+At that moment, beneath them, in the bank's cavernous subterranean vault, a robotic claw sprang to 
+life. Sliding on a double-axis transport system attached to the ceiling, the claw headed off in search 
+of the proper coordinates. On the cement floor below, hundreds of identical plastic crates lay 
+aligned on an enormous grid... like rows of small coffins in an underground crypt. 
+
+Whirring to a stop over the correct spot on the floor, the claw dropped down, an electric eye 
+confirming the bar code on the box. Then, with computer precision, the claw grasped the heavy 
+handle and hoisted the crate vertically. New gears engaged, and the claw transported the box to the 
+
+
+
+far side of the vault, coming to a stop over a stationary conveyor belt. 
+Gently now, the retrieval arm set down the crate and retracted. 
+Once the arm was clear, the conveyor belt whirred to life.... 
+
+
+
+Upstairs, Sophie and Langdon exhaled in relief to see the conveyor belt move. Standing beside the 
+belt, they felt like weary travelers at baggage claim awaiting a mysterious piece of luggage whose 
+contents were unknown. 
+
+The conveyor belt entered the room on their right through a narrow slit beneath a retractable door. 
+The metal door slid up, and a huge plastic box appeared, emerging from the depths on the inclined 
+conveyor belt. The box was black, heavy molded plastic, and far larger than she imagined. It 
+looked like an air-freight pet transport crate without any airholes. 
+
+The box coasted to a stop directly in front of them. 
+
+Langdon and Sophie stood there, silent, staring at the mysterious container. 
+
+Like everything else about this bank, this crate was industrial — metal clasps, a bar code sticker on 
+top, and molded heavy-duty handle. Sophie thought it looked like a giant toolbox. 
+
+Wasting no time, Sophie unhooked the two buckles facing her. Then she glanced over at Langdon. 
+Together, they raised the heavy lid and let it fall back. 
+
+Stepping forward, they peered down into the crate. 
+
+At first glance, Sophie thought the crate was empty. Then she saw something. Sitting at the bottom 
+of the crate. A lone item. 
+
+The polished wooden box was about the size of a shoebox and had ornate hinges. The wood was a 
+lustrous deep purple with a strong grain. Rosewood, Sophie realized. Her grandfather's favorite. 
+The lid bore a beautiful inlaid design of a rose. She and Langdon exchanged puzzled looks. Sophie 
+leaned in and grabbed the box, lifting it out. 
+
+My God, it's heavy! 
+
+She carried it gingerly to a large receiving table and set it down. Langdon stood beside her, both of 
+them staring at the small treasure chest her grandfather apparently had sent them to retrieve. 
+
+Langdon stared in wonderment at the lid's hand-carved inlay — a five-petal rose. He had seen this 
+
+
+
+type of rose many times. "The five-petal rose," he whispered, "is a Priory symbol for the Holy 
+Grail." 
+
+Sophie turned and looked at him. Langdon could see what she was thinking, and he was thinking it 
+too. The dimensions of the box, the apparent weight of its contents, and a Priory symbol for the 
+Grail all seemed to imply one unfathomable conclusion. The Cup of Christ is in this wooden box. 
+Langdon again told himself it was impossible. 
+
+"It's a perfect size," Sophie whispered, "to hold... a chalice." 
+
+It can 't be a chalice. 
+
+Sophie pulled the box toward her across the table, preparing to open it. As she moved it, though, 
+something unexpected happened. The box let out an odd gurgling sound. 
+
+Langdon did a double take. There's liquid inside? 
+
+Sophie looked equally confused. "Did you just hear...?" 
+
+Langdon nodded, lost. "Liquid." 
+
+Reaching forward, Sophie slowly unhooked the clasp and raised the lid. 
+
+The object inside was unlike anything Langdon had ever seen. One thing was immediately clear to 
+both of them, however. This was definitely not the Cup of Christ.
