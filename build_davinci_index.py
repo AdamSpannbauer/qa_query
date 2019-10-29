@@ -11,6 +11,7 @@ from blank import ____
 davinci_code_files = glob.glob('data/davinci_code/*.txt')
 
 # Define schema with title as a unique key
+# The only fields we have are chapter_title & chapter_text
 schema = ____
 
 # Create an index named 'davinci' in 'davinci_idx' directory
