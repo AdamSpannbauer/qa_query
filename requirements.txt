@@ -1,11 +1,11 @@
 whoosh
-deeppavlov
+deeppavlov==0.6.1
 requests
 bs4
-pandas
+pandas==0.25.1
 tqdm
-nltk
-numpy
+nltk==3.4.5
+numpy==1.17.2
 python-dateutil
 dash
 dash_table
