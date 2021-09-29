@@ -1,14 +1,31 @@
 import nltk
 import nltk.corpus
-from whoosh.analysis import StemmingAnalyzer, RegexTokenizer, LowercaseFilter, StopFilter, StemFilter
+from whoosh.analysis import (
+    StemmingAnalyzer,
+    RegexTokenizer,
+    LowercaseFilter,
+    StopFilter,
+    StemFilter,
+)
 from whoosh.analysis.tokenizers import default_pattern
 
-NLTK_STOPWORDS = set(nltk.corpus.stopwords.words('english'))
-QUESTION_STOPWORDS = {'who', 'what', 'where', 'when', 'why', 'how'}
+NLTK_STOPWORDS = set(nltk.corpus.stopwords.words("english"))
+QUESTION_STOPWORDS = {"who", "what", "where", "when", "why", "how"}
 QA_STOPWORDS = frozenset(QUESTION_STOPWORDS | NLTK_STOPWORDS)
-QA_NE_TYPES = frozenset(['ORGANIZATION', 'LOCATION', 'FACILITY', 'GPE'])
-ALL_NE_TYPES = frozenset(['ORGANIZATION', 'PERSON', 'LOCATION', 'DATE', 'TIME',
-                          'MONEY', 'PERCENT', 'FACILITY', 'GPE'])
+QA_NE_TYPES = frozenset(["ORGANIZATION", "LOCATION", "FACILITY", "GPE"])
+ALL_NE_TYPES = frozenset(
+    [
+        "ORGANIZATION",
+        "PERSON",
+        "LOCATION",
+        "DATE",
+        "TIME",
+        "MONEY",
+        "PERCENT",
+        "FACILITY",
+        "GPE",
+    ]
+)
 
 
 def ner_extract(text, ne_types=QA_NE_TYPES):
@@ -24,16 +41,17 @@ def ner_extract(text, ne_types=QA_NE_TYPES):
     chunks = nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(text)))
     ne_list = []
     for chunk in chunks:
-        if hasattr(chunk, 'label'):
+        if hasattr(chunk, "label"):
             if chunk.label() in ne_types:
-                full_ne = ' '.join(c[0] for c in chunk)
+                full_ne = " ".join(c[0] for c in chunk)
                 ne_list.append(full_ne)
 
-    return ' '.join(ne_list)
+    return " ".join(ne_list)
 
 
 class NERTokenizer(RegexTokenizer):
     """Named Entity centric version of RegexTokenizer"""
+
     def __init__(self, ne_types=QA_NE_TYPES, expression=default_pattern, gaps=False):
         self.ne_types = ne_types
         super().__init__(expression=expression, gaps=gaps)
@@ -45,8 +63,14 @@ class NERTokenizer(RegexTokenizer):
 
 # Conforming to camelCase convention used for analyzer functions in whoosh_utils
 # noinspection PyPep8Naming
-def NERAnalyzer(ne_types=QA_NE_TYPES, expression=default_pattern, stoplist=QA_STOPWORDS,
-                minsize=2, maxsize=None, gaps=False):
+def NERAnalyzer(
+    ne_types=QA_NE_TYPES,
+    expression=default_pattern,
+    stoplist=QA_STOPWORDS,
+    minsize=2,
+    maxsize=None,
+    gaps=False,
+):
     """Named Entity centric version of StandardAnalyzer
 
     :param ne_types: list/set of named entities to keep
@@ -68,8 +92,15 @@ def NERAnalyzer(ne_types=QA_NE_TYPES, expression=default_pattern, stoplist=QA_ST
 
 # Conforming to camelCase convention used for analyzer functions in whoosh_utils
 # noinspection PyPep8Naming
-def QAAnalyzer(ner_tokenize=False, ne_types=QA_NE_TYPES, expression=default_pattern,
-               stoplist=QA_STOPWORDS, minsize=2, maxsize=None, gaps=False):
+def QAAnalyzer(
+    ner_tokenize=False,
+    ne_types=QA_NE_TYPES,
+    expression=default_pattern,
+    stoplist=QA_STOPWORDS,
+    minsize=2,
+    maxsize=None,
+    gaps=False,
+):
     """Custom whoosh_utils analyzer for processing Named Entities and using custom stoplist
 
     :param ner_tokenize: Should NERAnalyzer be used instead of StandardAnalyzer

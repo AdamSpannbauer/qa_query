@@ -27,14 +27,14 @@ class BertSquad:
     def qa_session(self, document):
         while True:
             question_text = input("('exit' to quit) Question: ")
-            if question_text.lower() == 'exit':
+            if question_text.lower() == "exit":
                 break
 
             answer = self.ask_question(document, question_text)
             print(answer)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     document_list = [
         "Tuesday's session closes with the NASDAQ Composite Index at 7,874.16. The total shares traded for the NASDAQ"
         " was over 2.18 billion. Declining stocks led advancers by 2.47 to 1 ratio. There were 926 advancers and 2287"
@@ -49,7 +49,7 @@ if __name__ == '__main__':
         "largest percent change gain rising 1.6%.",
     ]
 
-    input_document = '\n\n'.join(document_list)
+    input_document = "\n\n".join(document_list)
 
     bert_squad = BertSquad(use_noans=False)
     bert_squad.qa_session(input_document)

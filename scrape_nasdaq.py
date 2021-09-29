@@ -29,16 +29,26 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 ap = argparse.ArgumentParser()
-ap.add_argument('-o', '--output', default='data/articles',
-                help='Path for scraped results to be written to as multiple JSON files.')
-ap.add_argument('-n', '--n_pages', default=50, type=int,
-                help='Number of pages of articles to scrape (~10 per page).')
-ap.add_argument('-p', '--page_offset', default=0, type=int,
-                help='Page number to start on.')
+ap.add_argument(
+    "-o",
+    "--output",
+    default="data/articles",
+    help="Path for scraped results to be written to as multiple JSON files.",
+)
+ap.add_argument(
+    "-n",
+    "--n_pages",
+    default=50,
+    type=int,
+    help="Number of pages of articles to scrape (~10 per page).",
+)
+ap.add_argument(
+    "-p", "--page_offset", default=0, type=int, help="Page number to start on."
+)
 args = vars(ap.parse_args())
 
 
 scraper = NasdaqScraper()
-scraper.scrape_articles(output_dir=args['output'],
-                        n_pages=args['n_pages'],
-                        page_offset=args['page_offset'])
+scraper.scrape_articles(
+    output_dir=args["output"], n_pages=args["n_pages"], page_offset=args["page_offset"]
+)

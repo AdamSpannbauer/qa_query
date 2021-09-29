@@ -1,11 +1,22 @@
 whoosh
-deeppavlov==0.6.1
+deeppavlov; python_version=='3.6' or python_version=='3.7'
 requests
 bs4
-pandas==0.25.1
+pandas
 tqdm
-nltk==3.4.5
-numpy==1.17.2
+nltk
+numpy
 python-dateutil
 dash
-dash_table
+
+
+# last working on adam's macOS Catalina 10.15.7
+# python version 3.7.2
+
+# Whoosh==2.7.4
+# deeppavlov==0.17.1
+# bs4==4.10.0
+# pandas==0.25.3
+# tqdm==4.62.0
+# nltk==3.4.5
+# dash==2.0.0

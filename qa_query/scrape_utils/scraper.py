@@ -16,7 +16,7 @@ class Scraper:
         self.robot_parser.set_url(robots_txt_url)
         self.robot_parser.read()
 
-        self.crawl_delay_seconds = self.robot_parser.crawl_delay(useragent='*')
+        self.crawl_delay_seconds = self.robot_parser.crawl_delay(useragent="*")
         if self.crawl_delay_seconds is None:
             self.crawl_delay_seconds = 0
 
@@ -30,7 +30,9 @@ class Scraper:
         return wait_time.seconds
 
     def _wait_on_request_rate(self):
-        logger.info(f'Waiting for {self.crawl_delay_seconds} second crawl delay (per robots.txt).')
+        logger.info(
+            f"Waiting for {self.crawl_delay_seconds} second crawl delay (per robots.txt)."
+        )
 
         while True:
             if self.seconds_waited >= self.crawl_delay_seconds:
@@ -42,7 +44,7 @@ class Scraper:
         self.last_request_timestamp = datetime.datetime.utcnow()
 
     def _get_page(self, url):
-        if not self.robot_parser.can_fetch(useragent='*', url=url):
+        if not self.robot_parser.can_fetch(useragent="*", url=url):
             raise PermissionError('URL disallowed for useragent="*"')
 
         self._wait_on_request_rate()
@@ -56,7 +58,7 @@ class Scraper:
     def get_page(self, url):
         for i in range(self.n_tries):
             if i:
-                msg = f'Failed scrape of:\n{url}\n\nAttempting try {i + 1} of {self.n_tries}'
+                msg = f"Failed scrape of:\n{url}\n\nAttempting try {i + 1} of {self.n_tries}"
                 warnings.warn(msg)
 
             # noinspection PyBroadException
@@ -68,6 +70,6 @@ class Scraper:
         return None
 
 
-if __name__ == '__main__':
-    scraper = Scraper(robots_txt_url='https://www.nasdaq.com/robots.txt')
-    page_html = scraper.get_page('https://www.nasdaq.com/news/market-headlines.aspx')
+if __name__ == "__main__":
+    scraper = Scraper(robots_txt_url="https://www.nasdaq.com/robots.txt")
+    page_html = scraper.get_page("https://www.nasdaq.com/news/market-headlines.aspx")
